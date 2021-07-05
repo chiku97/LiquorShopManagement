@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace WinFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class ProductsForm : Form
     {
-        public Form1()
+        public ProductsForm()
         {
             InitializeComponent();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -22,15 +27,9 @@ namespace WinFormsApp1
 
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            Application.Exit();
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ProductsForm p = new ProductsForm();
-            p.Show();
         }
     }
 }
