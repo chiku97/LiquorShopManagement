@@ -54,9 +54,9 @@ namespace WinFormsApp1
             try
             {
                 con.Open();
-                String query = "insert into productTable values ("+productid.Text+"," +
-                    "'"+productname.Text+"','"+productquantity.Text+"','"+listBoxsize.SelectedItem+"'," +
-                    "'"+costprice.Text+"','"+sellingprice.Text+"','"+listBoxCategory.SelectedItem+"')";
+                string query = "insert into productTable values ("+productid.Text+"," +
+                    "'"+productname.Text+"','"+productquantity.Text+"','"+listBoxsize.SelectedItem.ToString()+"'," +
+                    "'"+costprice.Text+"','"+sellingprice.Text+"','"+listBoxCategory.SelectedItem.ToString()+"')";
 
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
@@ -67,7 +67,34 @@ namespace WinFormsApp1
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                con.Close();
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SallerForm s = new SallerForm();
+            s.Show();
+
+        }
+
+        private void ProductsForm_Load_1(object sender, EventArgs e)
+        {
+            loadProductsData();
+        }
+
+
+        private void loadProductsData()
+        {
+            con.Open();
+            String query = "select * from productTable";
+            SqlDataAdapter sda = new SqlDataAdapter(query,con);
+            SqlCommandBuilder scb = new SqlCommandBuilder(sda);
+            var dataSet = new DataSet();
+            sda.Fill(dataSet);
+            dataGridView1.DataSource = dataSet.Tables[0];
+            con.Close();
+        }
+
     }
 }

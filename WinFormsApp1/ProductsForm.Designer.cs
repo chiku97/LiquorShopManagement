@@ -311,6 +311,7 @@ namespace WinFormsApp1
             this.button2.TabIndex = 1;
             this.button2.Text = "Selling";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -345,6 +346,7 @@ namespace WinFormsApp1
             this.Name = "ProductsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProductsForm";
+            this.Load += new System.EventHandler(this.ProductsForm_Load_1);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
