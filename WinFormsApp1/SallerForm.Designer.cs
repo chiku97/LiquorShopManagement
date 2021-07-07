@@ -32,7 +32,7 @@ namespace WinFormsApp1
             this.panel1 = new System.Windows.Forms.Panel();
             this.sallerAge = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.sellerDataGrid = new System.Windows.Forms.DataGridView();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
@@ -50,7 +50,7 @@ namespace WinFormsApp1
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sellerDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -58,7 +58,7 @@ namespace WinFormsApp1
             this.panel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel1.Controls.Add(this.sallerAge);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.sellerDataGrid);
             this.panel1.Controls.Add(this.buttonDelete);
             this.panel1.Controls.Add(this.buttonEdit);
             this.panel1.Controls.Add(this.buttonAdd);
@@ -92,16 +92,16 @@ namespace WinFormsApp1
             this.label8.TabIndex = 24;
             this.label8.Text = "Saller Age";
             // 
-            // dataGridView1
+            // sellerDataGrid
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(430, 174);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(557, 375);
-            this.dataGridView1.TabIndex = 19;
+            this.sellerDataGrid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.sellerDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.sellerDataGrid.Location = new System.Drawing.Point(430, 174);
+            this.sellerDataGrid.Name = "sellerDataGrid";
+            this.sellerDataGrid.RowHeadersWidth = 51;
+            this.sellerDataGrid.RowTemplate.Height = 29;
+            this.sellerDataGrid.Size = new System.Drawing.Size(557, 375);
+            this.sellerDataGrid.TabIndex = 19;
             // 
             // buttonDelete
             // 
@@ -223,6 +223,7 @@ namespace WinFormsApp1
             this.button3.TabIndex = 6;
             this.button3.Text = "Products";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -257,9 +258,10 @@ namespace WinFormsApp1
             this.Name = "SallerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SallerForm";
+            this.Load += new System.EventHandler(this.SallerForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sellerDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -269,7 +271,7 @@ namespace WinFormsApp1
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox sallerAge;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView sellerDataGrid;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonAdd;

@@ -42,5 +42,29 @@ namespace WinFormsApp1
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void SallerForm_Load(object sender, EventArgs e)
+        {
+            loadSellersData();
+        }
+
+        private void loadSellersData()
+        {
+            con.Open();
+            String query = "select * from sellersTable";
+            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlCommandBuilder scb = new SqlCommandBuilder(sda);
+            var dataSet = new DataSet();
+            sda.Fill(dataSet);
+            sellerDataGrid.DataSource = dataSet.Tables[0];
+            con.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ProductsForm pf = new ProductsForm();
+            pf.Show();
+            this.Close();
+        }
     }
 }
