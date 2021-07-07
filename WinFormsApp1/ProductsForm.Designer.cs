@@ -192,6 +192,7 @@ namespace WinFormsApp1
             this.buttonAdd.TabIndex = 4;
             this.buttonAdd.Text = "ADD";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // listBoxCategory
             // 
@@ -236,6 +237,7 @@ namespace WinFormsApp1
             this.productid.Name = "productid";
             this.productid.Size = new System.Drawing.Size(187, 27);
             this.productid.TabIndex = 11;
+            this.productid.TextChanged += new System.EventHandler(this.productid_TextChanged);
             // 
             // label6
             // 
