@@ -69,5 +69,21 @@ namespace WinFormsApp1
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void populate()
+        {
+            con.Open();
+            String query = "select * from productTable";
+            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlCommandBuilder builder = new SqlCommandBuilder(sda);
+            var ds = new DataSet();
+            sda.Fill(ds);
+            productDGV.DataSource = ds.Tables[0];
+            con.Close();
+        }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            populate();
+        }
     }
 }
