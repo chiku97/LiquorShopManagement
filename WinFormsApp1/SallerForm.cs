@@ -66,5 +66,34 @@ namespace WinFormsApp1
             pf.Show();
             this.Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void sellerDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView sellerDataGrid = new DataGridView();
+
+            //sellerDataGrid.Columns[0].Name = "sallerid";
+            //sellerDataGrid.Columns[1].Name = "sallername";
+            //sellerDataGrid.Columns[2].Name = "sallerAge";
+            //sellerDataGrid.Columns[3].Name = "sallerPhone";
+            //sellerDataGrid.Columns[4].Name = "sellerPasswoed";
+
+            sallerid.Text = sellerDataGrid.SelectedRows[0].Cells[0].Value.ToString();
+            sallername.Text = sellerDataGrid.SelectedRows[0].Cells[1].Value.ToString();
+            sallerAge.Text = sellerDataGrid.SelectedRows[0].Cells[2].Value.ToString();
+            sallerPhone.Text = sellerDataGrid.SelectedRows[0].Cells[3].Value.ToString();
+            sellerPasswoed.Text = sellerDataGrid.SelectedRows[0].Cells[4].Value.ToString();
+
+            
+        }
+
+        private void sallerAge_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

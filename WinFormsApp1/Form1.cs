@@ -29,8 +29,45 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ProductsForm p = new ProductsForm();
-            p.Show();
+
+
+            if (listBox1.SelectedIndex > 0)
+            {
+                
+                if (listBox1.SelectedItem.Equals("Admin"))
+                {
+                    if (textBox1.Text.ToLower() == "admin" && textBox2.Text.ToLower() == "admin")
+                    {
+                        ProductsForm p = new ProductsForm();
+                        p.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Admin Credentials incorrect");
+                    }
+                }
+                else if (listBox1.SelectedItem.Equals("Seller"))
+                {
+                    if (textBox1.Text.ToLower() == "seller" && textBox2.Text.ToLower() == "seller")
+                    {
+                        sellingForm sf = new sellingForm();
+                        sf.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("seller Credentials incorrect");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect credentials");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select login type");
+            }
+
         }
     }
 }

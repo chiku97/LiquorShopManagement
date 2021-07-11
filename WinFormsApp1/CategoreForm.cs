@@ -16,5 +16,10 @@ namespace WinFormsApp1
         {
             InitializeComponent();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            categoreid.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+        }
     }
 }

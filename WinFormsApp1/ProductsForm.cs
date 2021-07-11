@@ -62,7 +62,6 @@ namespace WinFormsApp1
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Insterted");
                 con.Close();
-
             }
             catch (Exception ex)
             {
@@ -92,9 +91,24 @@ namespace WinFormsApp1
             SqlCommandBuilder scb = new SqlCommandBuilder(sda);
             var dataSet = new DataSet();
             sda.Fill(dataSet);
-            dataGridView1.DataSource = dataSet.Tables[0];
+            productDGV.DataSource = dataSet.Tables[0];
             con.Close();
         }
 
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void productDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            productid.Text = productDGV.SelectedRows[0].Cells[0].Value.ToString();
+           // productname.Text = productDGV.SelectedRows[0].Cells[1].Value.ToString();
+           // productquantity.Text = productDGV.SelectedRows[0].Cells[2].Value.ToString();
+           // listBoxCate = productDGV.SelectedRows[0].Cells[3].Value.ToString();
+           // costprice.Text = productDGV.SelectedRows[0].Cells[4].Value.ToString();
+          //  sellingprice.Text = productDGV.SelectedRows[0].Cells[5].Value.ToString();
+           // productid.Text = productDGV.SelectedRows[0].Cells[6].Value.ToString();
+        }
     }
 }

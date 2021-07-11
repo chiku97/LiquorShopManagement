@@ -48,7 +48,6 @@ namespace WinFormsApp1
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sellerDataGrid)).BeginInit();
             this.SuspendLayout();
@@ -82,6 +81,7 @@ namespace WinFormsApp1
             this.sallerAge.Name = "sallerAge";
             this.sallerAge.Size = new System.Drawing.Size(187, 27);
             this.sallerAge.TabIndex = 25;
+            this.sallerAge.TextChanged += new System.EventHandler(this.sallerAge_TextChanged);
             // 
             // label8
             // 
@@ -102,6 +102,7 @@ namespace WinFormsApp1
             this.sellerDataGrid.RowTemplate.Height = 29;
             this.sellerDataGrid.Size = new System.Drawing.Size(557, 375);
             this.sellerDataGrid.TabIndex = 19;
+            this.sellerDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.sellerDataGrid_CellContentClick);
             // 
             // buttonDelete
             // 
@@ -214,10 +215,11 @@ namespace WinFormsApp1
             this.button4.TabIndex = 4;
             this.button4.Text = "X";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(55, 232);
+            this.button3.Location = new System.Drawing.Point(55, 332);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(94, 29);
             this.button3.TabIndex = 6;
@@ -227,28 +229,18 @@ namespace WinFormsApp1
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(55, 336);
+            this.button2.Location = new System.Drawing.Point(55, 244);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(94, 29);
             this.button2.TabIndex = 5;
             this.button2.Text = "Selling";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(55, 286);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Categories";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // SallerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1251, 655);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button4);
@@ -287,6 +279,5 @@ namespace WinFormsApp1
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
     }
 }
