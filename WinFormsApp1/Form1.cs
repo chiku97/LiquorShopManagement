@@ -69,5 +69,12 @@ namespace WinFormsApp1
             }
 
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            listBox1.ClearSelected();
+            textBox1.Clear();
+            textBox2.Clear();
+        }
     }
 }

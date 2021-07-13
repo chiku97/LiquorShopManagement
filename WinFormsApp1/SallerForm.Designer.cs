@@ -81,7 +81,7 @@ namespace WinFormsApp1
             this.sallerAge.Name = "sallerAge";
             this.sallerAge.Size = new System.Drawing.Size(187, 27);
             this.sallerAge.TabIndex = 25;
-            this.sallerAge.TextChanged += new System.EventHandler(this.sallerAge_TextChanged);
+            
             // 
             // label8
             // 
@@ -112,6 +112,7 @@ namespace WinFormsApp1
             this.buttonDelete.TabIndex = 18;
             this.buttonDelete.Text = "DELETE";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonEdit
             // 
@@ -121,6 +122,7 @@ namespace WinFormsApp1
             this.buttonEdit.TabIndex = 17;
             this.buttonEdit.Text = "EDIT";
             this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // buttonAdd
             // 

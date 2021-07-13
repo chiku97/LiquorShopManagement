@@ -97,18 +97,100 @@ namespace WinFormsApp1
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (productid.Text == "")
+                {
+                    MessageBox.Show("Select the product to Delet");
+                }
+                else
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("update productTable set name=@name,quantity=@quantity,productsize=@productsize,costprice=@costprice," +
+                        "sellingprice=@sellingprice,category=@category where Id=@productId", con);
+                    cmd.Parameters.AddWithValue("@productId", productid.Text);
+                    cmd.Parameters.AddWithValue("@name", productname.Text);
+                    cmd.Parameters.AddWithValue("@quantity", productquantity.Text);
+                    cmd.Parameters.AddWithValue("@productsize", listBoxsize.SelectedItem);
+                    cmd.Parameters.AddWithValue("@costprice", costprice.Text);
+                    cmd.Parameters.AddWithValue("@sellingprice", sellingprice.Text);
+                    cmd.Parameters.AddWithValue("@category", listBoxCategory.SelectedItem);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Product successfully update");
+                    con.Close();
+                    loadProductsData();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
         private void productDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            productid.Text = productDGV.SelectedRows[0].Cells[0].Value.ToString();
-           // productname.Text = productDGV.SelectedRows[0].Cells[1].Value.ToString();
-           // productquantity.Text = productDGV.SelectedRows[0].Cells[2].Value.ToString();
-           // listBoxCate = productDGV.SelectedRows[0].Cells[3].Value.ToString();
-           // costprice.Text = productDGV.SelectedRows[0].Cells[4].Value.ToString();
-          //  sellingprice.Text = productDGV.SelectedRows[0].Cells[5].Value.ToString();
-           // productid.Text = productDGV.SelectedRows[0].Cells[6].Value.ToString();
+            int i = e.RowIndex;
+            DataGridViewRow row = productDGV.Rows[i];
+            productid.Text = row.Cells[0].Value.ToString();
+            productname.Text = row.Cells[1].Value.ToString();
+            productquantity.Text = row.Cells[2].Value.ToString();
+            listBoxsize.SelectedItem = row.Cells[3].Value.ToString();
+            costprice.Text = row.Cells[4].Value.ToString();
+            sellingprice.Text = row.Cells[5].Value.ToString();
+            listBoxCategory.SelectedItem = row.Cells[6].Value.ToString();
+
         }
+
+        private void buttonDelete_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (productid.Text == "")
+                {
+                    MessageBox.Show("Select the product to Delet");
+                }
+                else
+                {
+                    con.Open();
+                    string query = "delete from productTable where id=" + productid.Text + "";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Product Deleted successfully");
+                    con.Close();
+                    loadProductsData();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                con.Open();
+               // string query = "select * from productTable where category=" + listBoxViewCategory.SelectedItem + "";
+                SqlCommand cmd = new SqlCommand("select * from productTable where category=@category", con);
+                cmd.Parameters.AddWithValue("@category", listBoxViewCategory.SelectedItem);
+                cmd.ExecuteNonQuery();
+                //SqlCommandBuilder scb = new SqlCommandBuilder(sda);
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                var dataSet = new DataSet();
+                sda.Fill(dataSet);
+                productDGV.DataSource = dataSet.Tables[0];
+                MessageBox.Show("Refreshed successfully");
+                con.Close();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+    
     }
 }

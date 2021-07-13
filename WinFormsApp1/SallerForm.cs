@@ -16,7 +16,8 @@ namespace WinFormsApp1
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;
         AttachDbFilename=C:\Users\uttam\OneDrive\Documents\liquordb.mdf;
         Integrated Security=True;Connect Timeout=30");
-        
+        SqlCommand cmd;
+
         public SallerForm()
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace WinFormsApp1
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Insterted");
+                loadSellersData();
                 con.Close();
 
             }
@@ -74,7 +76,7 @@ namespace WinFormsApp1
 
         private void sellerDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView sellerDataGrid = new DataGridView();
+            
 
             //sellerDataGrid.Columns[0].Name = "sallerid";
             //sellerDataGrid.Columns[1].Name = "sallername";
@@ -82,18 +84,73 @@ namespace WinFormsApp1
             //sellerDataGrid.Columns[3].Name = "sallerPhone";
             //sellerDataGrid.Columns[4].Name = "sellerPasswoed";
 
-            sallerid.Text = sellerDataGrid.SelectedRows[0].Cells[0].Value.ToString();
-            sallername.Text = sellerDataGrid.SelectedRows[0].Cells[1].Value.ToString();
-            sallerAge.Text = sellerDataGrid.SelectedRows[0].Cells[2].Value.ToString();
-            sallerPhone.Text = sellerDataGrid.SelectedRows[0].Cells[3].Value.ToString();
-            sellerPasswoed.Text = sellerDataGrid.SelectedRows[0].Cells[4].Value.ToString();
+            int i = e.RowIndex;
+            DataGridViewRow row = sellerDataGrid.Rows[i];
+            sallerid.Text = row.Cells[0].Value.ToString();
+            sallername.Text = row.Cells[1].Value.ToString();
+            sallerAge.Text = row.Cells[2].Value.ToString();
+            sallerPhone.Text = row.Cells[3].Value.ToString();
+            sellerPasswoed.Text = row.Cells[4].Value.ToString();
 
-            
+
         }
 
-        private void sallerAge_TextChanged(object sender, EventArgs e)
+        private void buttonEdit_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (sallerid.Text == "")
+                {
+                    MessageBox.Show("Select the product to Delet");
+                }
+                else
+                {
+                    con.Open();
+                    cmd = new SqlCommand("update sellersTable set sellerName=@sellerName,sellerAge=@sellerAge,sellerPhone=@sellerPhone,sellerPassword=@sellerPassword where sellerId=@sellerId", con);
+                    cmd.Parameters.AddWithValue("@sellerId", sallerid.Text);
+                    cmd.Parameters.AddWithValue("@sellerName", sallername.Text);
+                    cmd.Parameters.AddWithValue("@sellerAge", Int32.Parse(sallerAge.Text));
+                    cmd.Parameters.AddWithValue("@sellerPhone", sallerPhone.Text);
+                    cmd.Parameters.AddWithValue("@sellerPassword", sellerPasswoed.Text);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Product successfully update");
+                    loadSellersData();
+                    con.Close();
+                    
+                }
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (sallerid.Text == "")
+                {
+                    MessageBox.Show("Select the product to Delet");
+                }
+                else
+                {
+                    con.Open();
+                    string query = "delete from sellersTable where sellerId=" + sallerid.Text + "";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Product Deleted successfully");
+                    con.Close();
+                    loadSellersData();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
-}
+ }

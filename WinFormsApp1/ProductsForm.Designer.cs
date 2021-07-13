@@ -139,6 +139,7 @@ namespace WinFormsApp1
             this.buttonRefresh.TabIndex = 21;
             this.buttonRefresh.Text = "Refresh";
             this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
             // listBoxViewCategory
             // 
@@ -175,6 +176,7 @@ namespace WinFormsApp1
             this.buttonDelete.TabIndex = 18;
             this.buttonDelete.Text = "DELETE";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click_1);
             // 
             // buttonEdit
             // 
