@@ -125,6 +125,7 @@ namespace WinFormsApp1
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                con.Close();
             }
 
         }
